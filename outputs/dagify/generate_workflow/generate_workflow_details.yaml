@@ -1,0 +1,105 @@
+dag_type: plain_text
+description: A highly concurrent workflow to generate a workflow
+name: generate_workflow
+nodes:
+  choose_execution_order:
+    agent: false
+    description: This step chooses the order in which the workflow steps should be
+      executed.
+    name: choose_execution_order
+    nodes_depended_on:
+    - determine_input_data
+    nodes_dependent_on: []
+    prompt: Determine the order in which the workflow steps should be executed. This
+      could involve dependencies between steps or parallel processing.
+  choose_risk_mitigation_strategies:
+    agent: false
+    description: This step chooses risk mitigation strategies to address identified
+      risks.
+    name: choose_risk_mitigation_strategies
+    nodes_depended_on:
+    - identify_potential_risks
+    nodes_dependent_on: []
+    prompt: Choose risk mitigation strategies to address identified risks. This could
+      involve backups, disaster recovery plans, or data encryption.
+  create_workflow_document:
+    agent: false
+    description: This step creates a document summarizing the workflow design.
+    name: create_workflow_document
+    nodes_depended_on:
+    - design_workflow_recovery_plan
+    nodes_dependent_on: []
+    prompt: Create a document summarizing the workflow design. This could include
+      step-by-step instructions, diagrams, and resource references.
+  define_workflow_description:
+    agent: false
+    description: This step defines the description of the workflow.
+    name: define_workflow_description
+    nodes_depended_on:
+    - define_workflow_name
+    nodes_dependent_on: []
+    prompt: Enter a brief description of the workflow. This should summarize its purpose
+      and expected output.
+  define_workflow_name:
+    agent: false
+    description: This step defines the name of the workflow.
+    name: define_workflow_name
+    nodes_depended_on: []
+    nodes_dependent_on: []
+    prompt: Enter a unique name for the workflow. It should be descriptive and concise.
+  define_workflow_scope:
+    agent: false
+    description: This step defines the scope of the workflow.
+    name: define_workflow_scope
+    nodes_depended_on:
+    - choose_execution_order
+    nodes_dependent_on: []
+    prompt: Define the scope of the workflow. This could include the specific data
+      sources, users, or systems involved.
+  design_workflow_recovery_plan:
+    agent: false
+    description: This step designs a recovery plan to handle potential failures or
+      errors.
+    name: design_workflow_recovery_plan
+    nodes_depended_on:
+    - choose_risk_mitigation_strategies
+    nodes_dependent_on: []
+    prompt: Design a recovery plan to handle potential failures or errors. This could
+      involve backup and restore procedures, system redundancy, or failover planning.
+  determine_input_data:
+    agent: false
+    description: This step determines the input data required for the workflow.
+    name: determine_input_data
+    nodes_depended_on:
+    - identify_desired_outcomes
+    nodes_dependent_on: []
+    prompt: Describe the input data required to generate the desired outcomes. This
+      could include data from external sources, internal databases, or user input.
+  identify_desired_outcomes:
+    agent: false
+    description: This step identifies the desired outcomes of the workflow.
+    name: identify_desired_outcomes
+    nodes_depended_on:
+    - define_workflow_name
+    - define_workflow_description
+    nodes_dependent_on: []
+    prompt: List the specific outcomes you want the workflow to achieve. This could
+      include generating a report, creating a data model, or automating a process.
+  identify_potential_risks:
+    agent: false
+    description: This step identifies potential risks associated with the workflow.
+    name: identify_potential_risks
+    nodes_depended_on:
+    - define_workflow_scope
+    nodes_dependent_on: []
+    prompt: List potential risks associated with the workflow. This could include
+      security threats, data quality issues, or system failures.
+  review_and_refine_workflow:
+    agent: false
+    description: This step reviews and refines the workflow design as needed.
+    name: review_and_refine_workflow
+    nodes_depended_on:
+    - create_workflow_document
+    nodes_dependent_on: []
+    prompt: Review and refine the workflow design as needed. This could involve testing,
+      iteration, or stakeholder feedback.
