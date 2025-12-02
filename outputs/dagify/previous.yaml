@@ -1,138 +1,132 @@
 dag_type: plain_text
-description: A detailed workflow for building a spaceship, from designing the structure
-  to final assembly and testing
-name: build_spaceship
+description: A workflow for designing and constructing a space ship, including defining
+  specifications, designing components, and integrating systems.
+name: build_space_ship
 nodes:
-  assemble_propulsion_system:
+  define_space_ship_specifications:
     agent: false
-    description: Assemble the propulsion system
-    name: assemble_propulsion_system
-    nodes_depended_on:
-    - specify_propulsion_system
-    nodes_dependent_on: []
-    prompt: Assemble the propulsion system components (e.g., engines, fuel tanks)
-      according to the design specifications.
-  assemble_spaceship:
-    agent: false
-    description: Assemble the spaceship's major components
-    name: assemble_spaceship
-    nodes_depended_on:
-    - manufacture_structural_components
-    - assemble_propulsion_system
-    - install_life_support_systems
-    - install_electrical_and_communication_systems
-    - install_navigation_and_control_systems
-    nodes_dependent_on: []
-    prompt: Integrate the structural components, propulsion system, life support systems,
-      electrical and communication systems, and navigation and control systems into
-      a complete spaceship.
-  design_life_support_systems:
-    agent: false
-    description: Design the life support systems for the spaceship
-    name: design_life_support_systems
-    nodes_depended_on:
-    - design_spaceship_structure
-    nodes_dependent_on: []
-    prompt: Create a detailed design for the life support systems, including air,
-      water, and food supply, as well as waste management.
-  design_spaceship_structure:
-    agent: false
-    description: Create a detailed design for the spaceship's structure
-    name: design_spaceship_structure
+    description: Determine the space ship's mission objectives, size, and performance
+      requirements.
+    name: define_space_ship_specifications
     nodes_depended_on: []
     nodes_dependent_on: []
-    prompt: Design the overall structure of the spaceship, including the main body,
-      wings, and control surfaces. Consider materials and manufacturing methods.
-  develop_navigation_and_control_systems:
+    prompt: Specify the primary mission objectives, size constraints, and performance
+      requirements for the space ship. Include details on payload capacity, propulsion
+      type, and desired orbit or destination.
+  design_communication_system:
     agent: false
-    description: Develop the navigation and control systems for the spaceship
-    name: develop_navigation_and_control_systems
+    description: Design the communication system, including transceivers, antennas,
+      and data processing.
+    name: design_communication_system
     nodes_depended_on:
-    - design_spaceship_structure
+    - define_space_ship_specifications
     nodes_dependent_on: []
-    prompt: Create a detailed design for the navigation and control systems, including
-      sensors, software, and actuators.
-  finalize_spaceship:
+    prompt: Create a communication system design that allows the space ship to transmit
+      and receive data with Earth or other spacecraft, including the selection of
+      frequency bands, modulation schemes, and data protocols.
+  design_life_support_system:
     agent: false
-    description: Finalize the spaceship for launch
-    name: finalize_spaceship
+    description: Design the life support system, including air, water, and food supply,
+      as well as waste management.
+    name: design_life_support_system
     nodes_depended_on:
-    - validate_spaceship_performance
+    - define_space_ship_specifications
     nodes_dependent_on: []
-    prompt: Complete any remaining tasks, such as final inspections, documentation,
-      and preparation for launch.
-  install_electrical_and_communication_systems:
+    prompt: Create a life support system design that can sustain the crew for the
+      duration of the mission, including air recycling, water purification, food supply,
+      and waste management.
+  design_navigation_and_control_system:
     agent: false
-    description: Install the electrical and communication systems
-    name: install_electrical_and_communication_systems
+    description: Design the navigation and control systems, including sensors, software,
+      and actuators.
+    name: design_navigation_and_control_system
     nodes_depended_on:
-    - plan_electrical_and_communication_systems
-    - manufacture_structural_components
+    - define_space_ship_specifications
     nodes_dependent_on: []
-    prompt: Install the electrical power generation and distribution system, as well
-      as communication systems, within the spaceship.
-  install_life_support_systems:
+    prompt: Develop a navigation and control system design that enables the space
+      ship to accurately determine its position, velocity, and attitude, and control
+      its trajectory and orientation.
+  design_propulsion_system:
     agent: false
-    description: Install the life support systems
-    name: install_life_support_systems
+    description: Design the propulsion system, including the type of engines, fuel
+      tanks, and control systems.
+    name: design_propulsion_system
     nodes_depended_on:
-    - design_life_support_systems
-    - manufacture_structural_components
+    - define_space_ship_specifications
     nodes_dependent_on: []
-    prompt: Install the life support systems (e.g., air supply, water recycling) within
-      the spaceship's structure.
-  install_navigation_and_control_systems:
+    prompt: Develop a propulsion system design that meets the space ship's mission
+      requirements, including the selection of engine type, fuel, and necessary control
+      systems.
+  design_space_ship_structure:
     agent: false
-    description: Install the navigation and control systems
-    name: install_navigation_and_control_systems
+    description: Design the structural components of the space ship, including the
+      frame, skin, and load-bearing elements.
+    name: design_space_ship_structure
     nodes_depended_on:
-    - develop_navigation_and_control_systems
-    - manufacture_structural_components
+    - define_space_ship_specifications
     nodes_dependent_on: []
-    prompt: Install the navigation and control systems (e.g., sensors, software, actuators)
-      within the spaceship.
-  manufacture_structural_components:
+    prompt: Create a detailed design for the space ship's structural elements, ensuring
+      they meet the specified mission requirements and can withstand launch and space
+      environments.
+  finalize_space_ship_design:
     agent: false
-    description: Manufacture the structural components of the spaceship
-    name: manufacture_structural_components
+    description: Finalize the space ship design based on the results of the safety
+      and performance analysis.
+    name: finalize_space_ship_design
     nodes_depended_on:
-    - design_spaceship_structure
+    - perform_safety_and_performance_analysis
     nodes_dependent_on: []
-    prompt: Produce the structural components (e.g., main body, wings) according to
-      the design specifications.
-  plan_electrical_and_communication_systems:
+    prompt: Refine the space ship design to address any issues identified during the
+      safety and performance analysis, and confirm that the design meets all mission
+      requirements.
+  integrate_systems:
     agent: false
-    description: Plan the electrical and communication systems for the spaceship
-    name: plan_electrical_and_communication_systems
+    description: Integrate the designed systems into a cohesive space ship design.
+    name: integrate_systems
     nodes_depended_on:
-    - design_spaceship_structure
+    - design_space_ship_structure
+    - design_propulsion_system
+    - design_life_support_system
+    - design_navigation_and_control_system
+    - design_communication_system
     nodes_dependent_on: []
-    prompt: Design the electrical power generation and distribution system, as well
-      as communication systems (e.g., antennas, transceivers).
-  specify_propulsion_system:
+    prompt: Combine the designed systems into a complete space ship design, ensuring
+      that all components work together seamlessly to meet the mission objectives.
+  manufacture_and_assemble_space_ship:
     agent: false
-    description: Define the propulsion system for the spaceship
-    name: specify_propulsion_system
+    description: Manufacture and assemble the space ship according to the plan.
+    name: manufacture_and_assemble_space_ship
     nodes_depended_on:
-    - design_spaceship_structure
+    - plan_manufacturing_and_assembly
     nodes_dependent_on: []
-    prompt: Choose a suitable propulsion system (e.g., rocket engines, ion thrusters)
-      based on the spaceship's mission requirements and structural design.
-  test_spaceship_systems:
+    prompt: Execute the manufacturing and assembly plan, producing and integrating
+      the space ship components into a complete vehicle.
+  perform_safety_and_performance_analysis:
     agent: false
-    description: Test the spaceship's systems
-    name: test_spaceship_systems
+    description: Analyze the integrated space ship design for safety and performance.
+    name: perform_safety_and_performance_analysis
     nodes_depended_on:
-    - assemble_spaceship
+    - integrate_systems
     nodes_dependent_on: []
-    prompt: Conduct thorough testing of the spaceship's systems, including propulsion,
-      life support, electrical, communication, navigation, and control systems.
-  validate_spaceship_performance:
+    prompt: Conduct a thorough analysis of the space ship design to identify potential
+      safety risks and performance issues, and propose mitigations or design changes
+      as needed.
+  plan_manufacturing_and_assembly:
     agent: false
-    description: Validate the spaceship's performance
-    name: validate_spaceship_performance
+    description: Plan the manufacturing and assembly process for the space ship.
+    name: plan_manufacturing_and_assembly
     nodes_depended_on:
-    - test_spaceship_systems
+    - finalize_space_ship_design
     nodes_dependent_on: []
-    prompt: Evaluate the spaceship's overall performance, including its mission capability,
-      safety, and reliability.
+    prompt: Develop a detailed plan for manufacturing and assembling the space ship
+      components, including sourcing materials, fabricating parts, and integrating
+      subsystems.
+  test_and_validate_space_ship:
+    agent: false
+    description: Test and validate the completed space ship.
+    name: test_and_validate_space_ship
+    nodes_depended_on:
+    - manufacture_and_assemble_space_ship
+    nodes_dependent_on: []
+    prompt: Perform comprehensive testing and validation of the space ship to ensure
+      it meets the mission requirements and is ready for launch.
